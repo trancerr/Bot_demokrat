@@ -1,3 +1,4 @@
+from tg_bot.keyboards.inline import stocks_keyboard
 from tg_bot.keyboards.reply import menu
 from tg_bot.misc.main_text import text_stocks, \
     text_user_start, text_recording, text_story_recording, text_loyalty_program, text_discount
@@ -23,7 +24,7 @@ async def user_start(message: types.Message):
 
 @rate_limit(2)
 async def stocks(message: types.Message):
-    await message.answer(text_stocks)
+    await message.answer(text_stocks, reply_markup=stocks_keyboard)
 
 
 """Обработчик кнопки ✅Записаться на прием"""
@@ -54,6 +55,8 @@ async def loyalty_program(message: types.Message):
 
 
 """Обработчик кнопки 🤩Скидка 5️% за отзыв о клинике"""
+
+
 @rate_limit(2)
 async def discount(message: types.Message):
     await message.answer(f"{message.from_user.first_name}\n"
@@ -69,3 +72,4 @@ def register_user(dp: Dispatcher):
     dp.register_message_handler(recording, Text(endswith='прием'))
     dp.register_message_handler(story_recording, Text(endswith='записи'))
     dp.register_message_handler(loyalty_program, Text(endswith='лояльности'))
+    dp.register_message_handler(discount, Text(contains='отзыв'))
