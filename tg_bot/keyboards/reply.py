@@ -3,8 +3,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 menu = ReplyKeyboardMarkup(
     [
         [
-            KeyboardButton(text="💫Акции и скидки")
-        ],
+            KeyboardButton(text="💫Акции и скидки"),
+        ], 
         [
             KeyboardButton(text="🧾Мои записи"),
             KeyboardButton(text="✅Записаться на прием")
@@ -16,5 +16,5 @@ menu = ReplyKeyboardMarkup(
             KeyboardButton(text="🤩Скидка 5️% за отзыв о клинике")
         ]
     ],
-    resize_keyboard=True
+    resize_keyboard=True,
 )

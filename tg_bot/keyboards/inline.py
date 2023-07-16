@@ -17,7 +17,7 @@ stocks_keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(
                 text="Брекет-система (США) от 1100 руб/мес",
                 callback_data=stocks_callback.new(
-                    stock_name='osstem',
+                    stock_name='brecket',
                     stock_date='до 30.07.2023'
                 )
             )
