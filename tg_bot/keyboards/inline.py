@@ -2,6 +2,9 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from tg_bot.keyboards.callback_data_factory import stocks_callback
 
+"""
+Клавиатура списка акций
+"""
 stocks_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [

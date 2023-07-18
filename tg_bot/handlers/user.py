@@ -1,3 +1,5 @@
+from tg_bot.keyboards.add_entries_ketboard import online_entries_keyboard
+from tg_bot.keyboards.entries_keyboard import not_entries_keyboard
 from tg_bot.keyboards.inline import stocks_keyboard
 from tg_bot.keyboards.reply import menu
 from tg_bot.misc.main_text import text_stocks, \
@@ -33,7 +35,7 @@ async def stocks(message: types.Message):
 @rate_limit(2)
 async def recording(message: types.Message):
     await message.answer(f"{message.from_user.first_name}\n"
-                         f"{text_recording}")
+                         f"{text_recording}", reply_markup=online_entries_keyboard)
 
 
 """Обработчик кнопки Мои записи"""
@@ -42,7 +44,7 @@ async def recording(message: types.Message):
 @rate_limit(2)
 async def story_recording(message: types.Message):
     await message.answer(f"{message.from_user.first_name}\n"
-                         f"{text_story_recording}")
+                         f"{text_story_recording}", reply_markup=not_entries_keyboard)
 
 
 """Обработчик кнопки Программа лояльности"""

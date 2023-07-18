@@ -9,6 +9,8 @@ from aiogram.dispatcher.middlewares import BaseMiddleware
 from tg_bot.config import load_config
 from tg_bot.filters.admin import AdminFilter
 from tg_bot.handlers.echo import register_echo
+from tg_bot.handlers.entries_handler import register_entries
+from tg_bot.handlers.recording_handler import register_recording
 from tg_bot.handlers.stocks_handler import register_stocks
 from tg_bot.handlers.user import register_user
 from tg_bot.middleware.thottling import ThrottlingMiddleware
@@ -28,6 +30,8 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_user(dp)
     register_stocks(dp)
+    register_entries(dp)
+    register_recording(dp)
     register_censorship(dp)
     register_echo(dp)
 

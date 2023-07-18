@@ -16,5 +16,5 @@ menu = ReplyKeyboardMarkup(
             KeyboardButton(text="🤩Скидка 5️% за отзыв о клинике")
         ]
     ],
-    resize_keyboard=True,
+    resize_keyboard=True, one_time_keyboard=True
 )
