@@ -3,7 +3,7 @@ from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
 """
-Функции обработки кнопок списка записей
+Функции обработки кнопок списка записи
 """
 
 

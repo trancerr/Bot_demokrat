@@ -1,7 +1,9 @@
-from tg_bot.keyboards.add_entries_ketboard import online_entries_keyboard
+from tg_bot.keyboards.add_entries_keyboard import online_entries_keyboard
 from tg_bot.keyboards.entries_keyboard import not_entries_keyboard
 from tg_bot.keyboards.inline import stocks_keyboard
+from tg_bot.keyboards.loyalty_program_keyboard import loyalty_keyboard
 from tg_bot.keyboards.reply import menu
+from tg_bot.keyboards.review_keyboard import review_clinic_keyboard
 from tg_bot.misc.main_text import text_stocks, \
     text_user_start, text_recording, text_story_recording, text_loyalty_program, text_discount
 from tg_bot.misc.throttling import rate_limit
@@ -13,11 +15,11 @@ from aiogram.dispatcher.filters import Text
 
 @rate_limit(2)
 async def user_start(message: types.Message):
-    await message.answer(
-        f"Привет {message.from_user.first_name},"
-        f" {text_user_start}",
-        reply_markup=menu
-    )
+    sticer_id = 'CAACAgIAAxkBAAEJxbhku52mDv5Cx65n7L16iWT6LRUoXgACijQAAqJ22ElFrNpdiXThvS8E'
+    await message.answer_sticker(sticker=sticer_id, reply_markup=menu)
+    await message.answer(f"Привет {message.from_user.first_name},"
+                         f" {text_user_start}",
+                         reply_markup=menu)
 
 
 '''Функции обработки кнопок основного меню'''
@@ -53,25 +55,26 @@ async def story_recording(message: types.Message):
 @rate_limit(2)
 async def loyalty_program(message: types.Message):
     await message.answer(f"{message.from_user.first_name}\n"
-                         f"{text_loyalty_program}")
+                         f"{text_loyalty_program}", reply_markup=loyalty_keyboard)
 
 
 """Обработчик кнопки 🤩Скидка 5️% за отзыв о клинике"""
 
 
 @rate_limit(2)
-async def discount(message: types.Message):
+async def review_clinic(message: types.Message):
     await message.answer(f"{message.from_user.first_name}\n"
-                         f"{text_discount}")
+                         f"{text_discount}", reply_markup=review_clinic_keyboard)
 
 
 '''Функция обработчик регистрации hendlers'''
 
 
 def register_user(dp: Dispatcher):
-    dp.register_message_handler(user_start, commands=['start', 'help'], state="*")
+    dp.register_message_handler(user_start, commands=['start', 'help'],
+                                state="*")
     dp.register_message_handler(stocks, Text(endswith='скидки'))
     dp.register_message_handler(recording, Text(endswith='прием'))
     dp.register_message_handler(story_recording, Text(endswith='записи'))
     dp.register_message_handler(loyalty_program, Text(endswith='лояльности'))
-    dp.register_message_handler(discount, Text(contains='отзыв'))
+    dp.register_message_handler(review_clinic, Text(contains='отзыв'))

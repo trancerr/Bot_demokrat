@@ -36,7 +36,7 @@ stocks_keyboard = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="В начало",
+                text="↩️На главное меню",
                 callback_data='cancel'
             )
         ],
