@@ -6,7 +6,11 @@ async def set_default_commands(bot: Bot):
     commands = [
         BotCommand(
             command='start',
-            description='Start bot'
+            description='Запустить бота'
+        ),
+        BotCommand(
+            command='help',
+            description='Что умеет этот бот'
         ),
     ]
 

@@ -1,5 +1,6 @@
 from tg_bot.keyboards.callback_data_factory import stocks_callback
 from tg_bot.keyboards.reply import menu
+from tg_bot.keyboards.stock_keyboards import osstem_keyboard, brecket_keyboard, all_on_4_keyboard
 from tg_bot.misc.main_text import stocks_brecket, stocks_all_on_4
 from tg_bot.misc.throttling import rate_limit
 from aiogram import types, Dispatcher
@@ -13,19 +14,19 @@ from aiogram.dispatcher.filters import Text
 @rate_limit(2)
 async def osstem_btn(call: types.CallbackQuery):
     await call.answer(cache_time=60)
-    await call.message.answer("Имплантация Osstem от 1200 рублей в месяц")
+    await call.message.answer("Имплантация Osstem от 1200 рублей в месяц", reply_markup=osstem_keyboard)
 
 
 @rate_limit(2)
 async def brecket_btn(call: types.CallbackQuery):
     await call.answer(cache_time=60)
-    await call.message.answer(stocks_brecket)
+    await call.message.answer(stocks_brecket, reply_markup=brecket_keyboard)
 
 
 @rate_limit(2)
 async def all_on_4_btn(call: types.CallbackQuery):
     await call.answer(cache_time=60)
-    await call.message.answer(stocks_all_on_4)
+    await call.message.answer(stocks_all_on_4,  reply_markup=all_on_4_keyboard)
 
 
 @rate_limit(2)

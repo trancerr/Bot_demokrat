@@ -9,7 +9,7 @@ stocks_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="Имплантация Osstem от 1200 рублей в месяц",
+                text="🦷Имплантация Osstem от 1200 рублей в месяц",
                 callback_data=stocks_callback.new(
                     stock_name='osstem',
                     stock_date='до 30.07.2023'
@@ -18,7 +18,7 @@ stocks_keyboard = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="Брекет-система (США) от 1100 руб/мес",
+                text="😁Брекет-система (США) от 1100 руб/мес",
                 callback_data=stocks_callback.new(
                     stock_name='brecket',
                     stock_date='до 30.07.2023'
@@ -27,7 +27,7 @@ stocks_keyboard = InlineKeyboardMarkup(
         ],
         [
             InlineKeyboardButton(
-                text="Имплантация all on 4 со скидкой 35%",
+                text="🦷🦷Имплантация all on 4 со скидкой 35%",
                 callback_data=stocks_callback.new(
                     stock_name='all-on-4',
                     stock_date='до 30.07.2023'

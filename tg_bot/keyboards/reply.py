@@ -6,7 +6,7 @@ menu = ReplyKeyboardMarkup(
             KeyboardButton(text="💫Акции и скидки"),
         ], 
         [
-            KeyboardButton(text="🧾Мои записи"),
+            KeyboardButton(text="⁉️Остались вопросы..."),
             KeyboardButton(text="✅Записаться на прием")
         ],
         [
