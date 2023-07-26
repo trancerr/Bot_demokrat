@@ -4,7 +4,7 @@ from tg_bot.keyboards.inline import stocks_keyboard
 from tg_bot.keyboards.loyalty_program_keyboard import loyalty_keyboard
 from tg_bot.keyboards.reply import menu
 from tg_bot.keyboards.review_keyboard import review_clinic_keyboard
-from tg_bot.keyboards.suppot_keyboard import support_chat_keyboard
+from tg_bot.keyboards.suppot_keyboard import support_keyboards
 from tg_bot.misc.main_text import text_stocks, \
     text_user_start, text_recording, text_story_recording, text_loyalty_program, text_discount, text_user_help, \
     text_support_chat
@@ -17,7 +17,7 @@ from aiogram.dispatcher.filters import Text
 
 @rate_limit(2)
 async def user_start(message: types.Message):
-    sticer_id = 'CAACAgIAAxkBAAEJxbhku52mDv5Cx65n7L16iWT6LRUoXgACijQAAqJ22ElFrNpdiXThvS8E'
+    sticer_id = 'CAACAgIAAxkBAAEJzuZkv40aHbOzgNBjwi_ke5CQBXZWDAAC-C8AAmDeAUqxr1zhy180pC8E'
     await message.answer_sticker(sticker=sticer_id, reply_markup=menu)
     await message.answer(f"Привет {message.from_user.first_name},"
                          f" {text_user_start}",
@@ -26,6 +26,8 @@ async def user_start(message: types.Message):
 
 @rate_limit(2)
 async def user_help(message: types.Message):
+    sticer_id = 'CAACAgIAAxkBAAEJzuhkv40vubaOZR-FWBTrN8R5LFzTAQACfC0AAv1A-EmtbasJ5vDg1S8E'
+    await message.answer_sticker(sticker=sticer_id)
     await message.answer(f"Привет {message.from_user.first_name},"
                          f" {text_user_help}",
                          reply_markup=menu)
@@ -59,8 +61,9 @@ async def recording(message: types.Message):
 
 @rate_limit(2)
 async def support_chat(message: types.Message):
+    keyboard = await support_keyboards(messages='one')
     await message.answer(f"{message.from_user.first_name}\n"
-                         f"{text_support_chat}", reply_markup=support_chat_keyboard)
+                         f"{text_support_chat}", reply_markup=keyboard)
 
 
 """Обработчик кнопки Программа лояльности"""
