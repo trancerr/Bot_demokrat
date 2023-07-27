@@ -3,10 +3,8 @@ from aiogram.dispatcher import FSMContext
 from tg_bot.config import load_config
 from tg_bot.keyboards.suppot_keyboard import support_keyboards
 from tg_bot.keyboards.callback_data_factory import support_callback
-from tg_bot.keyboards.reply import menu
 from tg_bot.misc.throttling import rate_limit
 from aiogram import types, Dispatcher, Bot
-from aiogram.dispatcher.filters import Text
 
 config = load_config(".env")
 bot = Bot(token=config.tg_bot.token, parse_mode="HTML")
@@ -21,6 +19,7 @@ async def send_to_support(call: types.CallbackQuery, state: FSMContext, callback
     await state.update_data(second_id=user_id)
 
 
+@rate_limit(2)
 async def get_support_message(message: types.Message, state: FSMContext):
     data = await state.get_data()
     second_id = data['second_id']

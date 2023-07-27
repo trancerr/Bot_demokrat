@@ -2,7 +2,7 @@ import random
 
 from aiogram import Bot, Dispatcher
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
-from tg_bot.keyboards.callback_data_factory import support_callback, cancel_support
+from tg_bot.keyboards.callback_data_factory import support_callback, cancel_support_callback
 from tg_bot.config import load_config
 
 config = load_config(".env")
@@ -65,10 +65,23 @@ async def support_keyboards(messages, user_id=None):
         support_chat_keyboard.add(
             InlineKeyboardButton(
                 text='Завершить чат',
-                callback_data=cancel_support.new(
+                callback_data=cancel_support_callback.new(
                     user_id=contact_id
                 )
             )
         )
 
     return support_chat_keyboard
+
+
+def cancel_support(user_id):
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            InlineKeyboardButton(
+                text="Завершить общение",
+                callback_data=cancel_support_callback.new(
+                    user_id=user_id
+                )
+            )
+        ]
+    )

@@ -61,7 +61,7 @@ async def recording(message: types.Message):
 
 @rate_limit(2)
 async def support_chat(message: types.Message):
-    keyboard = await support_keyboards(messages='one')
+    keyboard = await support_keyboards(messages='many')
     await message.answer(f"{message.from_user.first_name}\n"
                          f"{text_support_chat}", reply_markup=keyboard)
 

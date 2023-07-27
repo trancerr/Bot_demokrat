@@ -13,8 +13,10 @@ from tg_bot.handlers.echo import register_echo
 from tg_bot.handlers.entries_handler import register_entries
 from tg_bot.handlers.recording_handler import register_recording
 from tg_bot.handlers.stocks_handler import register_stocks
+from tg_bot.handlers.suppoort_call_handler import register_support_coll
 from tg_bot.handlers.support_handler import register_support
 from tg_bot.handlers.user import register_user
+from tg_bot.middleware.support_middleware import SupportMiddleware
 from tg_bot.middleware.thottling import ThrottlingMiddleware
 from tg_bot.filters.censorship import register_censorship
 from tg_bot.misc.set_bot_commands import set_default_commands
@@ -24,6 +26,7 @@ logger = logging.getLogger(__name__)
 
 def register_all_middlewares(dp):
     dp.setup_middleware(ThrottlingMiddleware(BaseMiddleware))
+    dp.setup_middleware(SupportMiddleware())
 
 
 def register_all_filters(dp):
@@ -33,6 +36,7 @@ def register_all_filters(dp):
 def register_all_handlers(dp):
     register_user(dp)
     register_support(dp)
+    register_support_coll(dp)
     register_stocks(dp)
     register_entries(dp)
     register_recording(dp)
