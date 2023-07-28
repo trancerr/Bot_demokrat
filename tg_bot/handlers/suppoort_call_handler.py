@@ -5,11 +5,12 @@ from tg_bot.keyboards.suppot_keyboard import support_keyboards, check_support_av
 from tg_bot.keyboards.callback_data_factory import support_callback, cancel_support_callback
 from tg_bot.misc.throttling import rate_limit
 from aiogram import types, Dispatcher, Bot
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
 
 config = load_config(".env")
 
 bot = Bot(token=config.tg_bot.token, parse_mode="HTML")
-dp = Dispatcher(bot)
+dp = Dispatcher(bot, storage=MemoryStorage())
 
 
 @rate_limit(2)
@@ -69,7 +70,7 @@ async def answer_support_call(call: types.CallbackQuery, state: FSMContext, call
 async def not_supported(message: types.Message, state: FSMContext):
     data = await state.get_data()
     second_id = data.get('second_id')
-    keybord = cancel_support(user_id=second_id)
+    keybord = await cancel_support(user_id=second_id)
     await message.answer("Дождитесь ответа от оператора или отмените сеанс", reply_markup=keybord)
 
 

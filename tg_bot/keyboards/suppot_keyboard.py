@@ -74,14 +74,14 @@ async def support_keyboards(messages, user_id=None):
     return support_chat_keyboard
 
 
-def cancel_support(user_id):
+async def cancel_support(user_id):
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            InlineKeyboardButton(
+            [InlineKeyboardButton(
                 text="Завершить общение",
                 callback_data=cancel_support_callback.new(
                     user_id=user_id
                 )
-            )
+            )]
         ]
     )
