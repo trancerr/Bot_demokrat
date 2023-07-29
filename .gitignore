@@ -2,3 +2,4 @@
 .idea/*
 venv
 
+!/democrat_admin/db.sqlite3
