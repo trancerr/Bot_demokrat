@@ -1,3 +1,7 @@
+"""
+Модуль запуска бота
+"""
+
 import asyncio
 import logging
 

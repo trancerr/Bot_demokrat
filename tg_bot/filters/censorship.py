@@ -1,3 +1,7 @@
+"""
+Модуль анти мат
+"""
+
 from aiogram import Dispatcher
 from aiogram.types import Message
 

@@ -1,3 +1,6 @@
+"""
+Модуль обработчика входа администратора
+"""
 from aiogram import types, Dispatcher
 
 
