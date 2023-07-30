@@ -5,6 +5,13 @@
 import asyncio
 import logging
 
+import os
+import django
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "democrat_admin.democrat_admin.settings")
+os.environ.update({"DJANGO_ALLOW_ASYNC_UNSAFE": "true"})
+django.setup()
+
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.contrib.fsm_storage.redis import RedisStorage2

@@ -20,4 +20,4 @@ class CurrentStocksAdmin(admin.ModelAdmin):
 
 @admin.register(Mailing)
 class MailingAdmin(admin.ModelAdmin):
-    list_display = ('id', 'mailing_name', 'mailing_description', 'mailing_image', 'created_at')
+    list_display = ('id', "date_of_publication", 'mailing_name', 'mailing_description', 'mailing_image', 'created_at')

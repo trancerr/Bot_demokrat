@@ -1,7 +1,7 @@
 from django.db import models
 
 """
-Класс модели обязательных колонок создания и апдейта записи
+Класс модели обязательных колонок создания и изменения записи
 """
 
 
@@ -9,8 +9,8 @@ class TimeBaseModel(models.Model):
     class Meta:
         abstract = True
 
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Добавлено')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Изменено')
 
 
 """
@@ -60,6 +60,7 @@ class Mailing(TimeBaseModel):
     mailing_name = models.CharField(max_length=250, verbose_name='Заголовок рассылки')
     mailing_description = models.TextField(max_length=500, verbose_name='Описание рассылки')
     mailing_image = models.TextField(max_length=250, verbose_name='ID изображения рассылки')
+    date_of_publication = models.DateTimeField(auto_now=True, verbose_name='Дата рассылки')
 
 
 """
