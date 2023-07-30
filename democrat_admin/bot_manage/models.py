@@ -60,3 +60,17 @@ class Mailing(TimeBaseModel):
     mailing_name = models.CharField(max_length=250, verbose_name='Заголовок рассылки')
     mailing_description = models.TextField(max_length=500, verbose_name='Описание рассылки')
     mailing_image = models.TextField(max_length=250, verbose_name='ID изображения рассылки')
+
+
+"""
+Класс модели рефералов
+"""
+
+
+class Referral(TimeBaseModel):
+    class Meta:
+        verbose_name = 'Реферал'
+        verbose_name_plural = 'Рефералы'
+
+    id = models.OneToOneField(User, primary_key=True, on_delete=models.CASCADE)
+    referrer_id = models.BigIntegerField()
