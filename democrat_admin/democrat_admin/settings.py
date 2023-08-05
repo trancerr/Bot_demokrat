@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "bot_manage",
+    "democrat_admin.bot_manage",
 ]
 
 MIDDLEWARE = [
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "democrat_admin.urls"
+ROOT_URLCONF = "democrat_admin.democrat_admin.urls"
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "democrat_admin.wsgi.application"
+WSGI_APPLICATION = "democrat_admin.democrat_admin.wsgi.application"
 
 
 # Database

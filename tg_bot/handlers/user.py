@@ -12,13 +12,20 @@ from tg_bot.misc.throttling import rate_limit
 from aiogram import types, Dispatcher
 from aiogram.dispatcher.filters import Text
 
+from tg_bot.models import db_commands as commands
+
 '''Функция обработчик кнопки старт'''
 
 
 @rate_limit(2)
 async def user_start(message: types.Message):
-    sticer_id = 'CAACAgIAAxkBAAEJzuZkv40aHbOzgNBjwi_ke5CQBXZWDAAC-C8AAmDeAUqxr1zhy180pC8E'
-    await message.answer_sticker(sticker=sticer_id, reply_markup=menu)
+    user = await commands.add_user(
+        user_id=message.from_user.id,
+        full_name=message.from_user.full_name,
+        username=message.from_user.username
+    )
+    sticker_id = 'CAACAgIAAxkBAAEJzuZkv40aHbOzgNBjwi_ke5CQBXZWDAAC-C8AAmDeAUqxr1zhy180pC8E'
+    await message.answer_sticker(sticker=sticker_id, reply_markup=menu)
     await message.answer(f"Привет {message.from_user.first_name},"
                          f" {text_user_start}",
                          reply_markup=menu)
@@ -26,8 +33,8 @@ async def user_start(message: types.Message):
 
 @rate_limit(2)
 async def user_help(message: types.Message):
-    sticer_id = 'CAACAgIAAxkBAAEJzuhkv40vubaOZR-FWBTrN8R5LFzTAQACfC0AAv1A-EmtbasJ5vDg1S8E'
-    await message.answer_sticker(sticker=sticer_id)
+    sticker_id = 'CAACAgIAAxkBAAEJzuhkv40vubaOZR-FWBTrN8R5LFzTAQACfC0AAv1A-EmtbasJ5vDg1S8E'
+    await message.answer_sticker(sticker=sticker_id)
     await message.answer(f"Привет {message.from_user.first_name},"
                          f" {text_user_help}",
                          reply_markup=menu)

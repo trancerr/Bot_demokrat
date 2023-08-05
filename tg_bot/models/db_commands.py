@@ -49,3 +49,29 @@ def select_stock(id: int):
 @sync_to_async()
 def get_name_stocks() -> List[CurrentStocks]:
     return CurrentStocks.objects.distinct("name")
+
+
+"""
+Команды управления рассылками
+"""
+
+
+@sync_to_async()
+def select_all_mailings():
+    mailings = Mailing.objects.all()
+    return mailings
+
+
+@sync_to_async()
+def select_mailing(id: int):
+    mailing = Mailing.objects.filter(id=id).first()
+    return mailing
+
+
+@sync_to_async()
+def add_mailing(mailing_name, mailing_description, mailing_image, date_of_publication):
+    return Mailing(mailing_name=mailing_name,
+                   mailing_description=mailing_description,
+                   mailing_image=mailing_image,
+                   date_of_publication=date_of_publication
+                   ).save()
