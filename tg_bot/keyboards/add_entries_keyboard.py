@@ -8,12 +8,12 @@ online_entries_keyboard = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text='🌐Онлайн запись',
-                callback_data='online_btn'
+                callback_data='rec_online'
             )
         ],
 [
             InlineKeyboardButton(
-                text='📝Запись через администратора',
+                text='📲Отправить контакт телеграмма',
                 callback_data='admin_btn'
             )
         ],

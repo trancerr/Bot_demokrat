@@ -8,6 +8,8 @@ import logging
 import os
 import django
 
+from tg_bot.handlers.handler_states_recording import register_states_recording
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "democrat_admin.democrat_admin.settings")
 os.environ.update({"DJANGO_ALLOW_ASYNC_UNSAFE": "true"})
 django.setup()
@@ -50,6 +52,7 @@ def register_all_handlers(dp):
     register_support_coll(dp)
     register_stocks(dp)
     register_entries(dp)
+    register_states_recording(dp)
     register_recording(dp)
     register_channel_handler(dp)
     register_censorship(dp)
