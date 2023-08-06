@@ -1,4 +1,4 @@
-from amocrm.v2 import tokens
+from amocrm.v2 import tokens, Lead
 
 
 def connect_amo():
@@ -13,8 +13,15 @@ def connect_amo():
     #                                   skip_error=False)
 
 
+# тест получения сделки
+def add_info():
+    lead = Lead.objects.get(query='Мурдашова')
+    print(lead)
+
+
 def main():
     connect_amo()
+    add_info()
 
 
 if __name__ == '__main__':
