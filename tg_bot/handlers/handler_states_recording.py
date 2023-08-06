@@ -1,5 +1,6 @@
 from aiogram.dispatcher import FSMContext
 
+from api_amo.add_contat import add_contact
 from tg_bot.keyboards.reply import menu
 from tg_bot.misc.throttling import rate_limit
 from aiogram import types, Dispatcher
@@ -28,6 +29,7 @@ async def end_enter(message: types.Message, state: FSMContext):
     phone = message.text
     await message.answer(f'Спасибо {name} {phone}\n'
                          f'Администратор свяжется с вами в течении 10 минут.', reply_markup=menu)
+    # add_contact(name=name, phone=phone)
     await state.finish()
 
 
