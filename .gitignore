@@ -2,4 +2,8 @@
 .idea/*
 venv
 
-!/democrat_admin/db.sqlite3
+.democrat_admin/db.sqlite3
+api_amo/access_token.txt
+api_amo/connect_amo.py
+api_amo/refresh_token.txt
+
