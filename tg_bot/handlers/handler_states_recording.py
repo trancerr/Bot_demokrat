@@ -27,9 +27,9 @@ async def end_enter(message: types.Message, state: FSMContext):
     data = await state.get_data()
     name = data.get('answer_name')
     phone = message.text
-    await message.answer(f'Спасибо {name} {phone}\n'
+    await message.answer(f'Спасибо {name} ваш номер {phone}\n'
                          f'Администратор свяжется с вами в течении 10 минут.', reply_markup=menu)
-    # add_contact(name=name, phone=phone)
+    await add_contact(name=name, phone=phone)
     await state.finish()
 
 
